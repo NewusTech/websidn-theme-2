@@ -73,27 +73,27 @@
                 Section Item
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('image') }}">
+                <a class="nav-link" href="{{ url('admin/image') }}">
                     <i class="fas fa-fw fa-image"></i>
                     <span>Gambar</span>
                 </a>
-                <a class="nav-link" href="{{ url('corosel') }}">
+                <a class="nav-link" href="{{ url('admin/corosel') }}">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Gambar Slider</span>
                 </a>
-                <a class="nav-link" href="{{ url('card') }}">
+                <a class="nav-link" href="{{ url('admin/card') }}">
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Card</span>
                 </a>
-                <a class="nav-link" href="{{ url('text') }}">
+                <a class="nav-link" href="{{ url('admin/text') }}">
                     <i class="fas fa-fw fa-font"></i>
                     <span>Text</span>
                 </a>
-                <a class="nav-link" href="{{ url('testimoni') }}">
+                <a class="nav-link" href="{{ url('admin/testimoni') }}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Testimoni</span>
                 </a>
-                <a class="nav-link" href="{{ url('price') }}">
+                <a class="nav-link" href="{{ url('admin/price') }}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pricelist</span>
                 </a>
@@ -105,7 +105,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('home') }}">
+                <a class="nav-link" href="{{ url('admin/home') }}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Beranda</span>
                 </a>
@@ -117,25 +117,25 @@
                     <i class="fas fa-fw fa-envelope"></i>
                     <span>Portofolio</span>
                 </a> --}}
-                <a class="nav-link" href="{{ url('galeri') }}">
+                <a class="nav-link" href="{{ url('admin/galeri') }}">
                     <i class="fas fa-fw fa-camera"></i>
                     <span>Galeri</span>
                 </a>
-                <a class="nav-link" href="{{ url('file') }}">
+                <a class="nav-link" href="{{ url('admin/file') }}">
                     <i class="fas fa-fw fa-download"></i>
                     <span>Tambahkan File</span>
                 </a>
-                <a class="nav-link" href="{{ url('about') }}">
+                <a class="nav-link" href="{{ url('admin/about') }}">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Tentang Kami</span>
                 </a>
-                <a class="nav-link" href="{{ url('contact') }}">
+                <a class="nav-link" href="{{ url('admin/contact') }}">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Hubungi Kami</span>
                 </a>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('blog') }}" data-toggle="collapse"
+                <a class="nav-link collapsed" href="{{ url('admin/blog') }}" data-toggle="collapse"
                     data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Blogs</span>
@@ -144,13 +144,17 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Blog:</h6>
-                        <a class="collapse-item" href="{{ url('blog') }}"><i class="fas fa-fw fa-list"></i>Daftar
+                        <a class="collapse-item" href="{{ url('admin/blogs') }}"><i
+                                class="fas fa-fw fa-list"></i>Daftar
                             Blog</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('admin/blogkategoris') }}"><i
+                                class="fas fa-fw fa-pen"></i>Buat
                             Kategori Blog</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-pen"></i>Buat
+                        <a class="collapse-item" href="{{ url('admin/blogtags') }}"><i
+                                class="fas fa-fw fa-pen"></i>Buat
                             Kategori Tags</a>
-                        <a class="collapse-item" href="{{ url('blogcreate') }}"><i class="fas fa-fw fa-globe"></i>Buat
+                        <a class="collapse-item" href="{{ url('admin/blogconsoles') }}"><i
+                                class="fas fa-fw fa-globe"></i>Buat
                             Search Console</a>
                     </div>
                 </div>
@@ -195,7 +199,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/konsultasi">
                     <i class="fas fa-fw fa-phone"></i>
                     <span>Konsultasi</span></a>
             </li>
@@ -320,15 +324,15 @@
                         </li> --}}
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        {{-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                            </a> --}}
+                        <!-- Dropdown - Messages -->
+                        {{-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
@@ -384,8 +388,8 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More
                                     Messages</a>
-                            </div>
-                        </li>
+                            </div> --}}
+                        {{-- </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -393,24 +397,28 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{ asset('assets/img/undraw_profile.svg') }}">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <div class="img-profile rounded-circle profile-initial">
+                                    {{ substr(Auth::user()->name, 0, 1) }}
+                                </div>
                             </a>
+
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
+                                </a> --}}
+                                <a class="dropdown-item" href="/">
+                                    <i class="fas fa-phone fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Konsultasi
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal"

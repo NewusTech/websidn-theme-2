@@ -80,7 +80,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
 					@if ($logos->images)
-						<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height:50px">
 					@else
 						Gambar tidak tersedia
 					@endif
@@ -124,9 +124,9 @@
 	<!-- Carousel -->
 	<div class="demo-2">
 		<div class="page-view">
-			@foreach ($gambar as $index => $carousel)
+			@foreach ($carousel as $index => $slider)
 			<div class="project">
-				<div style="background-image: url('{{ asset('storage/' . $carousel->path) }}'); background-size: cover; background-position: center; width: 100%; height: 100%;">
+				<div style="background-image: url('{{ Storage::disk('s3')->url($slider->path) }}'); background-size: cover; background-position: center; width: 100%; height: 100%;">
 				</div>
 				<h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size:50px;">Photoshoot</h1>
 				
@@ -148,38 +148,6 @@
 	</div>
 	<!-- Carousel -->
 
-	<!-- About -->
-    <div id="about" class="section wb">
-        <div class="container">
-			<div class="section-title text-center">
-                <h3>Tentang Kami</h3>
-                {{-- <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.</p> --}}
-			</div>
-            <div class="row mt-3">
-				@foreach ($about as $abouts)
-                <div class="col-md-6">
-                    <div class="message-box">           
-                        <h2 class="mb-3"> {{ $abouts->judul }}</h2>
-                        <p class="text-dark" style="font-size: 17px"> {{ $abouts->text }}</p>
-						<div style="padding-top: 20px">
-							<a href="/tentang-kami" class="btn-primary hover-effect-new text-dark" ><span>Read More</span></a>
-						</div>
-                    </div><!-- end messagebox -->
-                </div><!-- end col -->
-
-                <div class="col-md-6">
-                    <div class="right-box">
-                        <div class="video-container">
-							<iframe class="rounded" width="540" height="375" src="{{ $abouts->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-						</div>
-                    </div><!-- end media -->
-                </div><!-- end col -->
-				@endforeach
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end section -->
-	<!-- About -->
-
 	<!-- Service -->
 	<div id="services" class="section lb py-4">
         <div class="container">
@@ -193,7 +161,7 @@
 				<div class="col-md-4">
 					<div class="effect-new">
 						<div class="services-inner-box">
-							<img class="img-fluid" src="{{ asset('storage/' . $layanan->image) }}" alt="">
+							<img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
 							<h2>{{ $layanan->judul }}</h2>
 							<p>{{ $layanan->detail }}</p>
 							<a href="/layanan" class="btn-primary rounded hover-effect-new text-dark"><span>Read More</span></a>
@@ -206,37 +174,17 @@
     </div><!-- end section -->
 	<!-- Service -->
 
-	<!-- Gallery -->
-	<div id="gallery" class="section wb py-4">
-		<div class="container">
-			<div class="section-title text-center">
-				<h3 class="text-dark">Galleri Kami</h3>
-				<p class="text-dark">Jelajahi Galeri Kami Yang Mengagumkan Dengan Menampilkan Keindahan Dan Keberagaman Seni Dari Berbagai Sudut Pandang"</p>
-			</div><!-- end title -->
-		
-			<div class="gallery-list row">
-				@foreach ($gallery as $galeri)
-				<div class="col-md-4 col-sm-6 gallery-grid photo_a">
-					<div class="gallery-single fix">
-						@if ($galeri->images)
-							<img src="{{ asset('storage/' . $galeri->images->path) }}" class="img-fluid" alt="Image">
-						@endif
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">{{ $galeri->texts->heading }}</h3>
-							</div>
-							<ul class="icon">
-								<li><a href="{{ asset('storage/' . $galeri->images->path) }}" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>								
-							</ul>
-						</div>
-					</div>
-				</div>
-				@endforeach
-				
-			</div>
-		</div>
-	</div>
-	<!-- Gallery -->
+	@foreach ($header as $headers)
+        <div class="container-fluid py-5 mb-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+            <div class="container py-5 mb-1 ">
+                <div class="container py-5 mb-1 ">
+                    <div class="container py-5 mb-1 ">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+	@endforeach
 
 	<!-- Price -->
 	<div id="pricing" class="section lb py-3">
@@ -272,31 +220,40 @@
 	</div>
 	<!-- Price -->
 
-	<!-- Team Member -->
-	<div class="section wb team py-4">
+	
+
+	
+	<!-- Gallery -->
+	<div id="gallery" class="section wb py-4">
 		<div class="container">
 			<div class="section-title text-center">
-				<h3 class="text-dark">Tim Kami</h3>
-				<p class="text-dark">Kami Memiliki Tim Yang Ahli Dan Berpengalaman</p>
+				<h3 class="text-dark">Galleri Kami</h3>
+				<p class="text-dark">Jelajahi Galeri Kami Yang Mengagumkan Dengan Menampilkan Keindahan Dan Keberagaman Seni Dari Berbagai Sudut Pandang"</p>
 			</div><!-- end title -->
-			
-			<div class="row g-4">
-				@foreach ($team as $tim)
-				<div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.1s">
-					<div class="team-item rounded border border-dark solid p-1 ">
-						<img class="img-fluid rounded-top " src="{{ asset('storage/' . $tim->image) }}" alt="">
-						<div class="team-content text-center py-3 rounded-bottom" style="background-color: #f9ba1f;">
-							<h2 class="text-dark"><b>{{ $tim->judul }}</b></h2>
-							<p class="text-dark mb-0">{{ $tim->detail }}</p>
+		
+			<div class="gallery-list row">
+				@foreach ($gallery as $galeri)
+				<div class="col-md-4 col-sm-6 gallery-grid photo_a">
+					<div class="gallery-single fix">
+						@if ($galeri->images)
+							<img src="{{ Storage::disk('s3')->url($galeri->images->path) }}" class="img-fluid" alt="Image">
+						@endif
+						<div class="box-content">
+							<div class="inner-content">
+								<h3 class="title">{{ $galeri->texts->heading }}</h3>
+							</div>
+							<ul class="icon">
+								<li><a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>								
+							</ul>
 						</div>
 					</div>
 				</div>
 				@endforeach
+				
 			</div>
-			
 		</div>
 	</div>
-	<!-- Team Member -->
+	<!-- Gallery -->
 
 	<!-- Testimoni -->
 	<div id="reviews" class="section wb parallaxie py-3" >
@@ -312,7 +269,7 @@
 						@foreach ($testimoni as $review)
                         <div class="testimonial clearfix">
 							<figure class="testimonial_img">
-								<img src="{{ asset('storage/' . $review->image) }}" alt="" class="img-fluid">
+								<img src="{{ Storage::disk('s3')->url($review->image) }}" alt="" class="img-fluid">
 							</figure>
                             <div class="desc">
                                 <h3><i class="fa fa-quote-left"></i> {{ $review->job }}</h3>
@@ -331,6 +288,66 @@
     </div><!-- end section -->
 	<!-- Testimoni -->
 
+
+	<!-- About -->
+    <div id="about" class="section wb">
+        <div class="container">
+			<div class="section-title text-center">
+                <h3>Tentang Kami</h3>
+                {{-- <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.</p> --}}
+			</div>
+            <div class="row mt-3">
+				@foreach ($about as $abouts)
+                <div class="col-md-6">
+                    <div class="message-box">           
+                        <h2 class="mb-3"> {{ $abouts->judul }}</h2>
+                        <p class="text-dark" style="font-size: 17px"> {{ $abouts->text }}</p>
+						<div style="padding-top: 20px">
+							<a href="/tentang-kami" class="btn-primary hover-effect-new text-dark" ><span>Read More</span></a>
+						</div>
+                    </div><!-- end messagebox -->
+                </div><!-- end col -->
+
+                <div class="col-md-6">
+                    <div class="right-box">
+                        <div class="video-container">
+							<iframe class="rounded" width="540" height="375" src="{{ $abouts->video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+						</div>
+                    </div><!-- end media -->
+                </div><!-- end col -->
+				@endforeach
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end section -->
+	<!-- About -->
+
+	<!-- Team Member -->
+	<div class="section lb team py-4">
+		<div class="container">
+			<div class="section-title text-center">
+				<h3 class="text-dark">Tim Kami</h3>
+				<p class="text-dark">Kami Memiliki Tim Yang Ahli Dan Berpengalaman</p>
+			</div><!-- end title -->
+			
+			<div class="row g-4">
+				@foreach ($team as $tim)
+				<div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.1s">
+					<div class="team-item rounded border border-dark solid-2 p-2 ">
+						<img class="img-fluid rounded-top " src="{{ Storage::disk('s3')->url($tim->image) }}" alt="">
+						<div class="team-content text-center py-3 rounded-bottom" style="background-color: #f9ba1f;">
+							<h2 class="text-dark"><b>{{ $tim->judul }}</b></h2>
+							<p class="text-dark mb-0">{{ $tim->detail }}</p>
+						</div>
+					</div>
+				</div>
+				@endforeach
+			</div>
+			
+		</div>
+	</div>
+	<!-- Team Member -->
+
+	
 	{{-- <div id="pricing" class="section lb">
 		<div class="container">
 			<div class="section-title text-center">
@@ -455,10 +472,12 @@
 						@foreach ($logo as $logos)
 						<a href="/">
 							@if ($logos->images)
-								<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+								<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" style="height: 90px" alt="Image">
 							@endif
 						</a>
-						<p>{{ $logos->texts->paragraph }}</p>
+						@endforeach
+						@foreach ($about as $abouts)
+						<p>{{ $abouts->text }}</p>
 						@endforeach
 					</div>
 				</div>

@@ -52,7 +52,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
 					@if ($logos->images)
-						<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height:50px">
 					@else
 						Gambar tidak tersedia
 					@endif
@@ -92,21 +92,20 @@
 		</div>
 	</nav>
 	
-	<div class="container mb-4 d-none d-md-block" style="padding-top: 8%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline ">Pricelist</h2>
+	@foreach ($header as $headers)
+	<div class="banner-area banner-bg-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="banner ">
+						<h2>Pricelist</h2>
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="container mb-4 mt-4 d-md-none" style="padding-top: 15%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Pricelist</h2>
-			</div>
-		</div>
-	</div>
+	@endforeach
 	
     <div id="services" class="section lb py-4">
         <div class="container">
@@ -117,7 +116,7 @@
 					<div class="effect-new">
 						<div class="services-inner-box">
 							<h2>Pricelist {{ $loop->iteration }}</h2>
-							<a href="{{ asset('storage/' . $file_prices->path) }}" class="btn-primary rounded hover-effect-new text-dark"><span>Download</span></a>
+							<a href="{{ Storage::disk('s3')->url($file_prices->path) }}" class="btn-primary rounded hover-effect-new text-dark"><span>Download</span></a>
 						</div>
 					</div>
                 </div><!-- end col -->
@@ -138,10 +137,12 @@
 						@foreach ($logo as $logos)
 						<a href="/">
 							@if ($logos->images)
-								<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+								<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" style="height: 90px" alt="Image">
 							@endif
 						</a>
-						<p>{{ $logos->texts->paragraph }}</p>
+						@endforeach
+						@foreach ($about as $abouts)
+						<p>{{ $abouts->text }}</p>
 						@endforeach
 					</div>
 				</div>

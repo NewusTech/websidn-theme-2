@@ -49,7 +49,7 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('galeri.create') }}" class="btn btn-primary">Add Galeri</a>
+        <a href="{{ route('galeri.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Galeri</a>
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -69,7 +69,7 @@
                             <td>{{ $galeri->id }}</td>
                             <td>
                                 @if ($galeri->images)
-                                    <img src="{{ asset('storage/' . $galeri->images->path) }}" alt="Gambar Home"
+                                    <img src="{{ Storage::disk('s3')->url($galeri->images->path) }}" alt="Gambar Home"
                                         width="300" height="200">
                                 @else
                                     Gambar tidak tersedia

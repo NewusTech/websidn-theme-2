@@ -49,7 +49,8 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('testimoni.create') }}" class="btn btn-primary">Add Testimoni</a>
+        <a href="{{ route('testimoni.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah
+            Testimoni</a>
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -72,7 +73,7 @@
                             <td>{{ $testimoni->name }}</td>
                             <td>{{ $testimoni->job }}</td>
                             <td>{{ $testimoni->description }}</td>
-                            <td><img src="{{ asset('storage/' . $testimoni->image) }}" width="100"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($testimoni->image) }}" width="100"></td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('testimoni.edit', $testimoni->id) }}"

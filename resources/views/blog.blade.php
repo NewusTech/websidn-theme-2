@@ -52,7 +52,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
 					@if ($logos->images)
-						<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height:50px">
 					@else
 						Gambar tidak tersedia
 					@endif
@@ -92,92 +92,45 @@
 		</div>
 	</nav>
 	
-	<div class="container mb-4 d-none d-md-block" style="padding-top: 8%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Artikel Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Artikel</a></li>
-				</ul>
+	@foreach ($header as $headers)
+	<div class="banner-area banner-bg-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="banner ">
+						<h2>Artikel Kami</h2>
+						<ul class="page-title-link ">
+							<li><a href="/" class="text-white">Beranda</a></li>
+							<li><a href="#"class="text-white" >Artikel</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="container mb-4 mt-4 d-md-none" style="padding-top: 15%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Artikel Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Artikel</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	@endforeach
 	
     <div id="services" class="section lb">
         <div class="container">
             <div class="section-title text-center">
                 <h3 style="font-size: 25px">Ikuti Berita Terbaru Kami Disini</h3>
-				{{-- <strong><p class="text-dark" style="font-size: 20px">Ikuti Berita Terbaru Kami Disini</p></strong> --}}
+				
 			</div><!-- end title -->
 
             <div class="row">
-				<div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-01.jpg">
-							<h2>Wedding Photography</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				@foreach ($blog as $artikel)
+				<div class="col-md-6 col-lg-4 text-start">
+					<div class="effect-new text-start">
+						<div class="blogs-inner-box text-start ">
+							<img src="{{ Storage::disk('s3')->url($artikel->image) }}" class="img-fluid w-100 mb-2" alt="">
+							<span class="card-text mb-3 mt-2 text-muted" style="font-size: 14px">{{ $artikel->nama_penulis }} , {{ $artikel->date }}</span>
+							<h2 class="text-primary fw-medium mt-2 mb-2"><a href="/{{ $artikel->slug }}">{{ $artikel->judul }}</a></h2>
+							<p class="lh-base mb-3 text-dark mt-2">{{ $artikel->deskripsi_singkat }} .....</p>
+							<h3><a href="#" class="card-link mt-3"><strong>#{{ $artikel->kategoris->kategori }}</strong></a></h3>
 						</div>
 					</div>
                 </div><!-- end col -->
-                <div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-02.jpg">
-							<h2>Portrait photography</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-03.jpg">
-							<h2>Event Photography</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-03.jpg">
-							<h2>Engagement Photography</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-                </div><!-- end col -->
-                <div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-01.jpg">
-							<h2>Beauty and fashion</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-                </div><!-- end col -->
-				<div class="col-md-4">
-					<div class="effect-new">
-						<div class="blogs-inner-box">
-							<img src="uploads/blog-02.jpg">
-							<h2>Corporate portrait</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-						</div>
-					</div>
-                </div><!-- end col -->
+                @endforeach
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
@@ -191,10 +144,12 @@
 						@foreach ($logo as $logos)
 						<a href="/">
 							@if ($logos->images)
-								<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+								<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" style="height: 90px" alt="Image">
 							@endif
 						</a>
-						<p>{{ $logos->texts->paragraph }}</p>
+						@endforeach
+						@foreach ($about as $abouts)
+						<p>{{ $abouts->text }}</p>
 						@endforeach
 					</div>
 				</div>

@@ -39,7 +39,8 @@
             </div>
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the
+                    klik tombol "Tambah Text". Pada halaman ini, Anda akan menemukan form yang terdiri dari kolom input
+                    untuk Halaman Text, Heading, Subheading dan Paragraf, tombol untuk mengunggah text, dan tombol simpan
                     <code>.show</code> class.
                 </div>
             </div>
@@ -47,7 +48,7 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('text.create') }}" class="btn btn-primary">Add Text</a>
+        <a href="{{ route('text.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Text</a>
     </div>
     <br>
     <div class="container-fluid bg-white">

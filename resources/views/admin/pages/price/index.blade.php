@@ -49,7 +49,9 @@
     </div>
     <br>
     <div class="container-fluid bg-white p-2">
-        <a href="{{ route('price.create') }}" class="btn btn-primary">Add Price</a>
+        @if (Auth::user()->name == 'SuperAdmin')
+            <a href="{{ route('price.create') }}" class="btn btn-primary"><i class="fas fa-fw fa-plus"></i>Tambah Price</a>
+        @endif
     </div>
     <br>
     <div class="container-fluid bg-white">
@@ -78,7 +80,8 @@
                             <td>{{ $price->item3 }}</td>
                             <td>{{ $price->item4 }}</td>
                             <td>{{ $price->item5 }}</td>
-                            <td><img src="{{ asset('storage/' . $price->image) }}" width="100" class="img-fluid"></td>
+                            <td><img src="{{ Storage::disk('s3')->url($price->image) }}" width="100" class="img-fluid">
+                            </td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Actions">
                                     <a href="{{ route('price.edit', $price->id) }}" class="btn btn-warning btn-sm">Edit</a>
@@ -87,7 +90,9 @@
                                         style="display:inline;">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @if (Auth::user()->name == 'SuperAdmin')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        @endif
                                     </form>
                                 </div>
                             </td>

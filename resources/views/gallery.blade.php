@@ -53,7 +53,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
 					@if ($logos->images)
-						<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height:50px">
 					@else
 						Gambar tidak tersedia
 					@endif
@@ -93,29 +93,23 @@
 		</div>
 	</nav>
 
-	<div class="container mb-4 d-none d-md-block" style="padding-top: 8%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Galeri Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Galeri</a></li>
-				</ul>
+	@foreach ($header as $headers)
+	<div class="banner-area banner-bg-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="banner ">
+						<h2>Galeri Kami</h2>
+						<ul class="page-title-link ">
+							<li><a href="/" class="text-white">Beranda</a></li>
+							<li><a href="#"class="text-white" >Galeri</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="container mb-4 mt-4 d-md-none" style="padding-top: 15%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Galeri Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Galeri</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	@endforeach
 	
     <div id="gallery" class="section wb">
 		<div class="container">
@@ -136,152 +130,19 @@
 
 				<div class="col-md-4 col-sm-6 gallery-grid {{ $galeri->texts->heading }}">
 					<div class="gallery-single fix">
-						<img src="{{ asset('storage/' . $galeri->images->path) }}" class="img-thumbnail" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($galeri->images->path) }}" class="img-thumbnail" alt="Image">
 						<div class="box-content">
 							<div class="inner-content">
 								<h3 class="title">{{ $galeri->texts->heading }}</h3>
 								
 							</div>
 							<ul class="icon">
-								<li><a href="{{ asset('storage/' . $galeri->images->path) }}" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
+								<li><a href="{{ Storage::disk('s3')->url($galeri->images->path) }}" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				@endforeach
-				
-
-
-
-
-				<div class="col-md-4 col-sm-6 gallery-grid photo_b">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-04.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Models</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-04.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_c">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-07.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Fashion</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-07.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_a">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-02.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Wedding</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-02.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_b">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-05.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Models</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-05.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_c">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-08.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Fashion</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-08.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_a">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-03.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Wedding</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-03.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_b">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-06.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Models</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-06.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 col-sm-6 gallery-grid photo_c">
-					<div class="gallery-single fix">
-						<img src="uploads/gallery_img-09.jpg" class="img-fluid" alt="Image">
-						<div class="box-content">
-							<div class="inner-content">
-								<h3 class="title">Fashion</h3>
-								<span class="post">Latest Photo</span>
-							</div>
-							<ul class="icon">
-								<li><a href="uploads/gallery_img-09.jpg" data-rel="prettyPhoto[gal]"><i class="fa fa-search"></i></a></li>
-								<li><a href="#"><i class="fa fa-link"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
 				
 			</div>
 		</div>
@@ -296,10 +157,12 @@
 						@foreach ($logo as $logos)
 						<a href="/">
 							@if ($logos->images)
-								<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+								<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" style="height: 90px" alt="Image">
 							@endif
 						</a>
-						<p>{{ $logos->texts->paragraph }}</p>
+						@endforeach
+						@foreach ($about as $abouts)
+						<p>{{ $abouts->text }}</p>
 						@endforeach
 					</div>
 				</div>

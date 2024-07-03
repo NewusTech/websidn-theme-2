@@ -52,7 +52,7 @@
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
 					@if ($logos->images)
-						<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+						<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" alt="Image" style="height:50px">
 					@else
 						Gambar tidak tersedia
 					@endif
@@ -91,36 +91,29 @@
 			</div>
 		</div>
 	</nav>
-	
-	
-	<div class="container mb-4 d-none d-md-block" style="padding-top: 8%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Layanan Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Layanan</a></li>
-				</ul>
+
+	@foreach ($header as $headers)
+	<div class="banner-area banner-bg-1" style="background: url('{{ Storage::disk('s3')->url($headers->images->path) }}') center center no-repeat; background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="banner ">
+						<h2>Layanan Kami</h2>
+						<ul class="page-title-link ">
+							<li><a href="/" class="text-white">Beranda</a></li>
+							<li><a href="#"class="text-white" >Layanan</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div class="container mb-4 mt-4 d-md-none" style="padding-top: 15%">
-		<div class="col-md-12 ">
-			<div class="banner text-center ">
-				<h2 class="underline mb-2">Layanan Kami</h2>
-				<ul class="page-title-link text-center mb-2">
-					<li><a href="/">Beranda</a></li>
-					<li><a href="#">Layanan</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	@endforeach
 	
     <div id="services" class="section lb ">
         <div class="container">
             <div class="section-title text-center">
-                <strong><p class="text-dark" style="font-size: 20px">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p></strong>
+                <strong><p class="text-dark" style="font-size: 22px">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p></strong>
             </div><!-- end title -->
 
 			<div class="row mb-3">
@@ -128,7 +121,7 @@
 				<div class="col-md-4">
 					<div class="effect-new">
 						<div class="services-inner-box">
-							<img class="img-fluid" src="{{ asset('storage/' . $layanan->image) }}" alt="">
+							<img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
 							<h2>{{ $layanan->judul }}</h2>
 							<p>{{ $layanan->detail }}</p>
 							<a href="/document-brosur" class="btn-primary rounded hover-effect-new text-dark"><span>Read More</span></a>
@@ -181,10 +174,12 @@
 						@foreach ($logo as $logos)
 						<a href="/">
 							@if ($logos->images)
-								<img src="{{ asset('storage/' . $logos->images->path) }}" class="img-fluid" alt="Image">
+								<img src="{{ Storage::disk('s3')->url($logos->images->path) }}" class="img-fluid" style="height: 90px" alt="Image">
 							@endif
 						</a>
-						<p>{{ $logos->texts->paragraph }}</p>
+						@endforeach
+						@foreach ($about as $abouts)
+						<p>{{ $abouts->text }}</p>
 						@endforeach
 					</div>
 				</div>
