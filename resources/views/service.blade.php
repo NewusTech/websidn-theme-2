@@ -47,7 +47,7 @@
     <!-- END LOADER -->
 	
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #38040E">
 		<div class="container-fluid">
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
@@ -59,32 +59,32 @@
 				@endforeach
 			</a>
 			<button class="navbar-toggler rounded" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"  style="background-color: #f9ba1f; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
+				<span class="navbar-toggler-icon"  style="background-color: #800E13; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				<ul class="navbar-nav mx-auto "style="font-size: 21px">
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/">Beranda</a>
+						<a class="nav-link active text-white mx-2" href="/">Beranda</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/layanan">Layanan</a>
+						<a class="nav-link text-white mx-2" href="/layanan">Layanan</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/galleri">Galeri</a>
+						<a class="nav-link text-white mx-2" href="/galleri">Galeri</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/portofolio">Portofolio</a>
+						<a class="nav-link text-white mx-2" href="/portofolio">Portofolio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/tentang-kami">Tentang Kami</a>
+						<a class="nav-link text-white mx-2" href="/tentang-kami">Tentang Kami</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/artikel">Artikel</a>
+						<a class="nav-link text-white mx-2" href="/artikel">Artikel</a>
 					</li>
 					<li class="nav-item mx-2">
 						<a href="/kontak-kami" class="btn btn-warning ml-2 mr-2 py-2 px-4 rounded-lg text-white"
-							style="font-size: 19px; color: #f9ba1f;">Hubungi Kami</a>
+							style="font-size: 19px; background-color: #800E13">Hubungi Kami</a>
 					</li>
 				</ul>
 				
@@ -110,21 +110,21 @@
 	</div>
 	@endforeach
 	
-    <div id="services" class="section lb ">
+    <div id="services" class="section lb " style="background-color: #38040E">
         <div class="container">
             <div class="section-title text-center">
-                <strong><p class="text-dark" style="font-size: 22px">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p></strong>
+                <strong><p class="text-white" style="font-size: 22px">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p></strong>
             </div><!-- end title -->
 
 			<div class="row mb-3">
 				@foreach ($service as $layanan)
 				<div class="col-md-4">
-					<div class="effect-new">
-						<div class="services-inner-box">
+					<div class="effect-new mb-4">
+						<div class="services-inner-box " style="background-color: #640D14">
 							<img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
-							<h2>{{ $layanan->judul }}</h2>
-							<p>{{ $layanan->detail }}</p>
-							<a href="/document-brosur" class="btn-primary rounded hover-effect-new text-dark"><span>Read More</span></a>
+							<h2 class="text-white">{{ $layanan->judul }}</h2>
+							<p class="text-white">{{ $layanan->detail }}</p>
+							<a href="/document-brosur" class="btn-primary rounded hover-effect-new text-white" style="background-color: #800E13"><span>Read More</span></a>
 						</div>
 					</div>
                 </div><!-- end col -->
@@ -135,18 +135,18 @@
         </div><!-- end container -->
     </div><!-- end section -->
 	
-	<div id="pricing" class="section wb py-2">
+	<div id="pricing" class="section wb py-2" style="background-color: #640D14">
 		<div class="container">
 			<div class="section-title text-center">
-                <h3 class="text-dark">Daftar Harga</h3>
-                <p class="text-dark">Jangan Lewatkan Pricelist Kami Untuk Menemukan Penawaran Yang Sesuai Dengan Kebutuhan Anda</p>
+                <h3 class="text-white">Daftar Harga</h3>
+                <p class="text-white">Jangan Lewatkan Pricelist Kami Untuk Menemukan Penawaran Yang Sesuai Dengan Kebutuhan Anda</p>
             </div><!-- end title -->
 			
 			<div class="row no-gutters pricing-table my-3 mx-2">
 				@foreach ($price as $prices)
 				<div class="col-lg-4 col-md-6 mb-4 px-4">
-					<div class="card list-group text-center bg-alt">
-						<div class="list-group-item  bg-dark">
+					<div class="card list-group text-center bg-alt" style="background-color: #c71f37">
+						<div class="list-group-item" style="background-color: #800E13">
 							<h1 class="text-center text-white"><b>{{ $prices->judul }}</b><br></h1>
 						</div>
 						<ul class="list-group list-group-flush">
@@ -156,7 +156,7 @@
 						  <li class="list-group-item">{{ $prices->item4 }}</li>
 						  <li class="list-group-item">{{ $prices->item5 }}</li>
 						  <div class="list-group-item ">
-							<a href="/document-price"><button class="btn btn-secondary hover-effect-new btn-lg btn-block text-truncate "><span>Read More</span></button></a>
+							<a href="/document-price"><button class="hover-effect-new btn-lg btn-block text-truncate text-white " style="background-color: #800E13;"><span>Read More</span></button></a>
 						</div>
 						</ul>
 					</div>
@@ -166,7 +166,7 @@
 		</div>
 	</div>
 	
-	<footer class="main-footer py-3 m-0">
+	<footer class="main-footer py-3 m-0" style="background-color: #38040E">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-md-6 col-sm-12">

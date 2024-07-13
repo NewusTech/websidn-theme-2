@@ -47,7 +47,7 @@
     <!-- END LOADER -->
 	
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #38040E">
 		<div class="container-fluid">
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
@@ -59,32 +59,32 @@
 				@endforeach
 			</a>
 			<button class="navbar-toggler rounded" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"  style="background-color: #f9ba1f; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
+				<span class="navbar-toggler-icon"  style="background-color: #800E13; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mx-auto "style="font-size: 21px">
+				<ul class="navbar-nav mx-auto"style="font-size: 21px">
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/">Beranda</a>
+						<a class="nav-link text-white mx-2" href="/">Beranda</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/layanan">Layanan</a>
+						<a class="nav-link text-white mx-2" href="/layanan">Layanan</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/galleri">Galeri</a>
+						<a class="nav-link text-white mx-2" href="/galleri">Galeri</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/portofolio">Portofolio</a>
+						<a class="nav-link text-white mx-2" href="/portofolio">Portofolio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/tentang-kami">Tentang Kami</a>
+						<a class="nav-link text-white mx-2" href="/tentang-kami">Tentang Kami</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/artikel">Artikel</a>
+						<a class="nav-link text-white mx-2" href="/artikel">Artikel</a>
 					</li>
 					<li class="nav-item mx-2">
 						<a href="/kontak-kami" class="btn btn-warning ml-2 mr-2 py-2 px-4 rounded-lg text-white"
-							style="font-size: 19px; color: #f9ba1f;">Hubungi Kami</a>
+							style="font-size: 19px; background-color: #800E13;">Hubungi Kami</a>
 					</li>
 				</ul>
 				
@@ -110,23 +110,23 @@
 	</div>
 	@endforeach
 	
-    <div id="services" class="section lb">
+    <div id="services" class="section lb" style="background-color: #640D14">
         <div class="container">
             <div class="section-title text-center">
-                <h3 style="font-size: 25px">Ikuti Berita Terbaru Kami Disini</h3>
+                <h3 class="text-white" style="font-size: 25px">Ikuti Berita Terbaru Kami Disini</h3>
 				
 			</div><!-- end title -->
 
             <div class="row">
 				@foreach ($blog as $artikel)
-				<div class="col-md-6 col-lg-4 text-start">
-					<div class="effect-new text-start">
-						<div class="blogs-inner-box text-start ">
+				<div class="col-md-6 col-lg-4 text-start" >
+					<div class="effect-new text-start" >
+						<div class="blogs-inner-box text-start text-white border border-white solid-4 " style="background-color: #800E13">
 							<img src="{{ Storage::disk('s3')->url($artikel->image) }}" class="img-fluid w-100 mb-2" alt="">
-							<span class="card-text mb-3 mt-2 text-muted" style="font-size: 14px">{{ $artikel->nama_penulis }} , {{ $artikel->date }}</span>
-							<h2 class="text-primary fw-medium mt-2 mb-2"><a href="/{{ $artikel->slug }}">{{ $artikel->judul }}</a></h2>
-							<p class="lh-base mb-3 text-dark mt-2">{{ $artikel->deskripsi_singkat }} .....</p>
-							<h3><a href="#" class="card-link mt-3"><strong>#{{ $artikel->kategoris->kategori }}</strong></a></h3>
+							<span class="card-text mb-3 mt-2 text-white" style="font-size: 14px; color:white">{{ $artikel->nama_penulis }} , {{ $artikel->date }}</span>
+							<h2 class="text-primary text-white fw-medium mt-2 mb-2"><a class="text-white" href="/{{ $artikel->slug }}">{{ $artikel->judul }}</a></h2>
+							<p class="lh-base mb-3 text-white mt-2">{{ $artikel->deskripsi_singkat }} .....</p>
+							<h3><a href="#" class="card-link mt-3 text-white"><strong>#{{ $artikel->kategoris->kategori }}</strong></a></h3>
 						</div>
 					</div>
                 </div><!-- end col -->
@@ -136,7 +136,7 @@
     </div><!-- end section -->
 	
 
-	<footer class="main-footer py-3 m-0">
+	<footer class="main-footer py-3 m-0" style="background-color: #38040E">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-md-6 col-sm-12">

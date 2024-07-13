@@ -47,7 +47,7 @@
     <!-- END LOADER -->
 	
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #38040E">
 		<div class="container-fluid">
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
@@ -59,32 +59,32 @@
 				@endforeach
 			</a>
 			<button class="navbar-toggler rounded" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"  style="background-color: #f9ba1f; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
+				<span class="navbar-toggler-icon"  style="background-color: #800E13; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mx-auto "style="font-size: 21px">
+				<ul class="navbar-nav mx-auto"style="font-size: 21px">
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/">Beranda</a>
+						<a class="nav-link text-white mx-2" href="/">Beranda</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/layanan">Layanan</a>
+						<a class="nav-link text-white mx-2" href="/layanan">Layanan</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/galleri">Galeri</a>
+						<a class="nav-link text-white mx-2" href="/galleri">Galeri</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/portofolio">Portofolio</a>
+						<a class="nav-link text-white mx-2" href="/portofolio">Portofolio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/tentang-kami">Tentang Kami</a>
+						<a class="nav-link text-white mx-2" href="/tentang-kami">Tentang Kami</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/artikel">Artikel</a>
+						<a class="nav-link text-white mx-2" href="/artikel">Artikel</a>
 					</li>
 					<li class="nav-item mx-2">
 						<a href="/kontak-kami" class="btn btn-warning ml-2 mr-2 py-2 px-4 rounded-lg text-white"
-							style="font-size: 19px; color: #f9ba1f;">Hubungi Kami</a>
+							style="font-size: 19px; background-color: #800E13;">Hubungi Kami</a>
 					</li>
 				</ul>
 				
@@ -100,7 +100,7 @@
 			<img src="{{ Storage::disk('s3')->url($item->path) }}" class="img-fluid" alt="">
 		</div>
 	@endforeach
-	<section class="blog-details-section">
+	<section class="blog-details-section" >
 		<div class="container">
 			<div class="row">
 				{{-- @foreach ($blog as $artikel) --}}
@@ -108,8 +108,8 @@
 					<div class="blog-details-text">
 						<div class="bd-title">
 							<div class="">
-								<a href="/" style="color: #f9ba1f"><i class="fa fa-home" style="color: #f9ba1f"></i> Beranda ></a>
-								<a href="/artikel" style="color: #f9ba1f">Artikel ></a>
+								<a href="/" style="color: #AD2831"><i class="fa fa-home" style="color: #AD2831"></i> Beranda ></a>
+								<a href="/artikel" style="color: #AD2831">Artikel ></a>
 								<span>{{ $blog->judul }}</span>
 							</div>
 							<h2>{{ $blog->judul }}</h2>
@@ -121,7 +121,7 @@
 						</div>
 			
 						<div class="bd-desc">
-							<p>{{$blog->deskripsi}}</p>
+							<td>{!! $blog->deskripsi !!}</td>
 						</div>
 						
 						
@@ -134,7 +134,7 @@
 	<!-- Blog Details Section End -->
 	
 
-	<footer class="main-footer py-3 m-0">
+	<footer class="main-footer py-3 m-0" style="background-color: #38040E">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-md-6 col-sm-12">

@@ -75,7 +75,7 @@
     <!-- END LOADER -->
 	
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #38040E">
 		<div class="container-fluid">
 			<a class="navbar-brand js-scroll-trigger" href="/">
 				@foreach ($logo as $logos)
@@ -87,32 +87,32 @@
 				@endforeach
 			</a>
 			<button class="navbar-toggler rounded" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"  style="background-color: #f9ba1f; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
+				<span class="navbar-toggler-icon"  style="background-color: #800E13; width: 1.5em; height: 1.5em; font-size: 1.5em;"></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav mx-auto "style="font-size: 21px">
+				<ul class="navbar-nav mx-auto"style="font-size: 21px">
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/">Beranda</a>
+						<a class="nav-link text-white mx-2" href="/">Beranda</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/layanan">Layanan</a>
+						<a class="nav-link text-white mx-2" href="/layanan">Layanan</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/galleri">Galeri</a>
+						<a class="nav-link text-white mx-2" href="/galleri">Galeri</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/portofolio">Portofolio</a>
+						<a class="nav-link text-white mx-2" href="/portofolio">Portofolio</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/tentang-kami">Tentang Kami</a>
+						<a class="nav-link text-white mx-2" href="/tentang-kami">Tentang Kami</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-dark mx-2" href="/artikel">Artikel</a>
+						<a class="nav-link text-white mx-2" href="/artikel">Artikel</a>
 					</li>
 					<li class="nav-item mx-2">
 						<a href="/kontak-kami" class="btn btn-warning ml-2 mr-2 py-2 px-4 rounded-lg text-white"
-							style="font-size: 19px; color: #f9ba1f;">Hubungi Kami</a>
+							style="font-size: 19px; background-color: #800E13;">Hubungi Kami</a>
 					</li>
 				</ul>
 				
@@ -129,7 +129,6 @@
 				<div style="background-image: url('{{ Storage::disk('s3')->url($slider->path) }}'); background-size: cover; background-position: center; width: 100%; height: 100%;">
 				</div>
 				<h1 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size:50px;">Photoshoot</h1>
-				
 			</div>
 			@endforeach
 			<nav class="arrows">
@@ -149,22 +148,22 @@
 	<!-- Carousel -->
 
 	<!-- Service -->
-	<div id="services" class="section lb py-4">
+	<div id="services" class="section lb py-4" style="background-color: #38040E">
         <div class="container">
             <div class="section-title text-center ">
-                <h3 class="text-dark">Layanan Kami</h3>
-                <p class="text-dark">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p>
+                <h3 class="text-white">Layanan Kami</h3>
+                <p class="text-white">Kami Menawarkan Berbagai Layanan Sesuai Dengan Kebutuhan Anda</p>
 			</div><!-- end title -->
 
             <div class="row">
 				@foreach ($service as $layanan)
 				<div class="col-md-4">
 					<div class="effect-new">
-						<div class="services-inner-box">
+						<div class="services-inner-box text-white" style="background-color: #640D14">
 							<img class="img-fluid" src="{{ Storage::disk('s3')->url($layanan->image) }}" alt="">
-							<h2>{{ $layanan->judul }}</h2>
-							<p>{{ $layanan->detail }}</p>
-							<a href="/layanan" class="btn-primary rounded hover-effect-new text-dark"><span>Read More</span></a>
+							<h2 class="text-white">{{ $layanan->judul }}</h2>
+							<p class="text-white">{{ $layanan->detail }}</p>
+							<a href="/layanan" class="btn-primary rounded hover-effect-new text-white" style="background-color: #800E13"><span>Read More</span></a>
 						</div>
 					</div>
                 </div><!-- end col -->
@@ -187,28 +186,28 @@
 	@endforeach
 
 	<!-- Price -->
-	<div id="pricing" class="section lb py-3">
+	<div id="pricing" class="section lb py-3" style="background-color: #38040E">
 		<div class="container">
 			<div class="section-title text-center">
-                <h3 class="text-dark">Harga</h3>
-                <p class="text-dark">Jangan Lewatkan Pricelist Kami Untuk Menemukan Penawaran Yang Sesuai Dengan Kebutuhan Anda</p>
+                <h3 class="text-white">Harga</h3>
+                <p class="text-white">Jangan Lewatkan Pricelist Kami Untuk Menemukan Penawaran Yang Sesuai Dengan Kebutuhan Anda</p>
             </div><!-- end title -->
 			
 			<div class="row no-gutters pricing-table my-3 mx-2">
 				@foreach ($price as $prices)
-				<div class="col-lg-4 col-md-6 mb-4 px-4">
-					<div class="card list-group text-center bg-alt">
-						<div class="list-group-item  bg-dark">
-							<h1 class="text-center text-white"><b>{{ $prices->judul }}</b><br></h1>
+				<div class="col-lg-4 col-md-6 mb-4 px-4" >
+					<div class="card list-group text-center bg-alt" style="background-color: #c71f37">
+						<div class="list-group-item "style="background-color: #800E13">
+							<h1 class="text-center text-white" ><b>{{ $prices->judul }}</b><br></h1>
 						</div>
-						<ul class="list-group list-group-flush">
+						<ul class="list-group list-group-flush" >
 						  <li class="list-group-item">{{ $prices->item1 }}</li>
 						  <li class="list-group-item">{{ $prices->item2 }}</li>
 						  <li class="list-group-item">{{ $prices->item3 }}</li>
 						  <li class="list-group-item">{{ $prices->item4 }}</li>
 						  <li class="list-group-item">{{ $prices->item5 }}</li>
 						  <div class="list-group-item ">
-							<a href="/layanan"><button class="btn btn-secondary hover-effect-new btn-lg btn-block text-truncate "><span>Read More</span></button></a>
+							<a href="/layanan"><button class="hover-effect-new btn-lg btn-block text-truncate text-white " style="background-color: #800E13; font-size: 18px"><span>Read More</span></button></a>
 						</div>
 						</ul>
 					</div>
@@ -224,11 +223,11 @@
 
 	
 	<!-- Gallery -->
-	<div id="gallery" class="section wb py-4">
+	<div id="gallery" class="section wb py-4" style="background-color: #640D14">
 		<div class="container">
-			<div class="section-title text-center">
-				<h3 class="text-dark">Galleri Kami</h3>
-				<p class="text-dark">Jelajahi Galeri Kami Yang Mengagumkan Dengan Menampilkan Keindahan Dan Keberagaman Seni Dari Berbagai Sudut Pandang"</p>
+			<div class="section-title text-center ">
+				<h3 class="text-white">Galleri Kami</h3>
+				<p class="text-white">Jelajahi Galeri Kami Yang Mengagumkan Dengan Menampilkan Keindahan Dan Keberagaman Seni Dari Berbagai Sudut Pandang"</p>
 			</div><!-- end title -->
 		
 			<div class="gallery-list row">
@@ -256,7 +255,7 @@
 	<!-- Gallery -->
 
 	<!-- Testimoni -->
-	<div id="reviews" class="section wb parallaxie py-3" >
+	<div id="reviews" class="section wb parallaxie py-3" style="background-color: #38040E" >
         <div class="container">
             <div class="section-title text-center">
                 <h3>Testimoni</h3>
@@ -272,11 +271,11 @@
 								<img src="{{ Storage::disk('s3')->url($review->image) }}" alt="" class="img-fluid">
 							</figure>
                             <div class="desc">
-                                <h3><i class="fa fa-quote-left"></i> {{ $review->job }}</h3>
-                                <p>{{ $review->description }}</p>
+                                <h3 class="text-white"><i class="fa fa-quote-left text-white"></i> {{ $review->job }}</h3>
+                                <p class="text-white">{{ $review->description }}</p>
                             </div>
                             <div class="testi-meta">
-                                <h4>{{ $review->name }} </h4>
+                                <h4 class="text-white">{{ $review->name }} </h4>
                             </div>
                             <!-- end testi-meta -->
                         </div>
@@ -290,20 +289,20 @@
 
 
 	<!-- About -->
-    <div id="about" class="section wb">
+    <div id="about" class="section wb" style="background-color: #640D14">
         <div class="container">
-			<div class="section-title text-center">
-                <h3>Tentang Kami</h3>
+			<div class="section-title text-center text-white">
+                <h3 class="text-white">Tentang Kami</h3>
                 {{-- <p>Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus.</p> --}}
 			</div>
             <div class="row mt-3">
 				@foreach ($about as $abouts)
                 <div class="col-md-6">
                     <div class="message-box">           
-                        <h2 class="mb-3"> {{ $abouts->judul }}</h2>
-                        <p class="text-dark" style="font-size: 17px"> {{ $abouts->text }}</p>
+                        <h2 class="mb-3 text-white"> {{ $abouts->judul }}</h2>
+                        <p class="text-white" style="font-size: 17px"> {{ $abouts->text }}</p>
 						<div style="padding-top: 20px">
-							<a href="/tentang-kami" class="btn-primary hover-effect-new text-dark" ><span>Read More</span></a>
+							<a href="/tentang-kami" class="btn-primary hover-effect-new text-white" style="background-color: #AD2831" ><span>Read More</span></a>
 						</div>
                     </div><!-- end messagebox -->
                 </div><!-- end col -->
@@ -322,21 +321,21 @@
 	<!-- About -->
 
 	<!-- Team Member -->
-	<div class="section lb team py-4">
+	<div class="section lb team py-4" style="background-color: #38040E">
 		<div class="container">
 			<div class="section-title text-center">
-				<h3 class="text-dark">Tim Kami</h3>
-				<p class="text-dark">Kami Memiliki Tim Yang Ahli Dan Berpengalaman</p>
+				<h3 class="text-white">Tim Kami</h3>
+				<p class="text-white">Kami Memiliki Tim Yang Ahli Dan Berpengalaman</p>
 			</div><!-- end title -->
 			
 			<div class="row g-4">
 				@foreach ($team as $tim)
 				<div class="col-lg-3 col-md-6 wow bounceInUp" data-wow-delay="0.1s">
-					<div class="team-item rounded border border-dark solid-2 p-2 ">
+					<div class="team-item rounded border border-white solid-2 p-2 ">
 						<img class="img-fluid rounded-top " src="{{ Storage::disk('s3')->url($tim->image) }}" alt="">
-						<div class="team-content text-center py-3 rounded-bottom" style="background-color: #f9ba1f;">
-							<h2 class="text-dark"><b>{{ $tim->judul }}</b></h2>
-							<p class="text-dark mb-0">{{ $tim->detail }}</p>
+						<div class="team-content text-center py-3 rounded-bottom" style="background-color: #640D14;">
+							<h2 class="text-white"><b>{{ $tim->judul }}</b></h2>
+							<p class="text-white mb-0">{{ $tim->detail }}</p>
 						</div>
 					</div>
 				</div>
@@ -464,7 +463,7 @@
         </div>
     @endforeach
 
-	<footer class="main-footer py-3 m-0">
+	<footer class="main-footer py-3 m-0" style="background-color: #38040E">
 		<div class="container">
 			<div class="row justify-content-between">
 				<div class="col-lg-4 col-md-6 col-sm-12">
